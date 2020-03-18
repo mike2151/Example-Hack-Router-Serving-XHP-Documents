@@ -5,11 +5,8 @@ require_once(__DIR__.'/../vendor/hh_autoload.hh');
 use type Facebook\HackRouter\{BaseRouter, HttpMethod};
 
 // User Made Dependancies
-require_once(__DIR__.'/pages/home.hack');
 use function Serving\Src\Pages\Home\render as home_render;
 use function Serving\Src\Pages\Home\handle_post as home_handle_post;
-
-require_once(__DIR__.'/pages/param.hack');
 use function Serving\Src\Pages\Param\render as param_render;
 
 /* 
@@ -65,6 +62,7 @@ final class DocumentRouter extends BaseRouter<TResponder> {
 
 <<__EntryPoint>>
 function main(): noreturn {
+  \Facebook\AutoloadMap\initialize();
   $router = new DocumentRouter();
   $method_and_path = convert_request_to_path_and_method($_SERVER);
   try {
