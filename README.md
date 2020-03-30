@@ -14,6 +14,10 @@ Read more about XHP [here](https://docs.hhvm.com/hack/XHP/introduction)
 
 `composer install` 
 
+### Run Autoload:
+
+`vendor/bin/hh-autoload`
+
 ### Run:
 
 `hhvm -c config.ini -m server -p 8080`
