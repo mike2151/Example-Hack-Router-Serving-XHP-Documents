@@ -43,18 +43,18 @@ type TResponder = (function(dict<string, string>):string);
 final class DocumentRouter extends BaseRouter<TResponder> {
   <<__Override>>
   protected function getRoutes(
-  ): ImmMap<HttpMethod, ImmMap<string, TResponder>> {
-    return ImmMap {
-      HttpMethod::GET => ImmMap {
+  ): dict<HttpMethod, dict<string, TResponder>> {
+    return dict [
+      HttpMethod::GET => dict [
         '/' =>
           ($_params) ==> home_render(),
         '/example/{example_param}' =>
           ($params) ==> param_render($params['example_param']),
-      },
-      HttpMethod::POST => ImmMap {
+      ],
+      HttpMethod::POST => dict [
         '/' => ($_params) ==> home_handle_post(),
-      },
-    };
+      ],
+    ];
   }
 }
 
